@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -14,6 +15,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.attendance.view.DMDialog;
+import com.example.attendance.view.ToastUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private WebView mWVmhtml;
@@ -66,8 +71,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         img_mongolian.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                toast(MainActivity.this,"可以操作");
-                img_mongolian.setVisibility(View.GONE);
+               // img_mongolian.setVisibility(View.GONE);
+                showDialog();
                 return false;
             }
         });
@@ -129,5 +134,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return super.onKeyDown(keyCode, event);//退出H5界面
     }
 
-
+    private void showDialog() {
+        DMDialog.builder(this, R.layout.login_setting_dialog)
+                .onDialogInitListener((helper, dialog) ->
+                {
+                    helper.setOnClickListener(R.id.btn_login_out, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToastUtil.showToast(MainActivity.this,"退出登录");
+                        }
+                    });
+                    helper.setOnClickListener(R.id.btn_setting, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToastUtil.showToast(MainActivity.this,"系统设置");
+                        }
+                    });
+                })
+                .setGravity(Gravity.BOTTOM)
+                .show();
+    }
 }

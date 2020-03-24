@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.example.attendance.okhttp.CallBackUtil;
 import com.example.attendance.okhttp.OkhttpUtil;
 
@@ -63,6 +64,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setHint("教学楼#A101", et_classroom);
         setHint("请输入IP", et_device_ip);
         setHint("请输入端口号", et_port_id);
+        getInfo();
     }
 
     @Override
@@ -105,11 +107,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     public void getInfo() {
-        String url = "http://211.103.33.70:13382/parkingInterface/payment/getPayRecord";
+        String url = Constants.IP + "skip";
         Map<String, String> map = new HashMap<>();
-        map.put("openid", "123");
-        map.put("carownerId", "26");
-        map.put("sysType", "1");
+        map.put("uid", "123");
 
         Map<String, String> heaherMap = new HashMap<>();
         heaherMap.put("content-type", "application/json");
@@ -121,7 +121,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             @Override
             public void onResponse(String response) {
-
+                String msg = JSON.parseObject(response).getString("msg");
+                if (msg.equals("success")) {
+                    String d = JSON.parseObject(response).getString("d");
+                    switch (d) {
+                        case "1"://课程页面
+                            break;
+                        case "2"://考试页面
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         });
     }
