@@ -1,4 +1,4 @@
-package com.example.attendance;
+package com.example.attendance.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.example.attendance.BaseActivity;
+import com.example.attendance.Constants;
+import com.example.attendance.R;
 import com.example.attendance.okhttp.CallBackUtil;
 import com.example.attendance.okhttp.OkhttpUtil;
 
@@ -33,13 +36,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setSteepStatusBar(true);
-        setScreenRoate(true);
         super.onCreate(savedInstanceState);
         setActivityContentView(R.layout.activity_login);
         getToolBar().setTitle("智慧班牌");
         getToolBar().setLeftVisible(false);
-        getToolBar().setRight(false);
+        getToolBar().setRightVisible(false);
     }
 
     @Override

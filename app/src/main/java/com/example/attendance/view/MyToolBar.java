@@ -63,7 +63,7 @@ public class MyToolBar extends Toolbar {
         }
     }
 
-    public void setRight(boolean b) {
+    public void setRightVisible(boolean b) {
         if (b) {
             imgRight.setVisibility(VISIBLE);
         } else {
@@ -75,7 +75,7 @@ public class MyToolBar extends Toolbar {
         paramsTitle = new MyToolBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         paramsTitle.gravity = Gravity.CENTER;
         textTile = new TextView(getContext());
-        textTile.setTextColor(ContextCompat.getColor(getContext(), R.color.black));
+        textTile.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         textTile.setTextSize(16);
     }
 

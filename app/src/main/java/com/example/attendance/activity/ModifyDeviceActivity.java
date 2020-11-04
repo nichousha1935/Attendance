@@ -1,9 +1,11 @@
-package com.example.attendance;
+package com.example.attendance.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.example.attendance.BaseActivity;
+import com.example.attendance.R;
 import com.example.attendance.view.MyToolBar;
 
 public class ModifyDeviceActivity extends BaseActivity {
@@ -15,7 +17,7 @@ public class ModifyDeviceActivity extends BaseActivity {
         setActivityContentView(R.layout.activity_modify_device);
         getToolBar().setTitle("系统设置");
         getToolBar().setLeftVisible(true);
-        getToolBar().setRight(false);
+        getToolBar().setRightVisible(false);
         getToolBar().setToolBarLeftOnClickListener(new MyToolBar.ToolBarLeftOnClickListener() {
             @Override
             public void setToolBarLeftOnClick() {

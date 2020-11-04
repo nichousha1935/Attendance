@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.attendance"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -36,4 +38,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.13.1'
     implementation 'com.alibaba:fastjson:1.2.55'
     implementation 'com.airbnb.android:lottie:2.5.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
